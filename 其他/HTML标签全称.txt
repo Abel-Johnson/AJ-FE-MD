@@ -1,0 +1,115 @@
+<a>:anchor 定义锚 
+<abbr>:abbreviation 定义缩写 
+<acronym>: 定义只取消首字母的缩写 
+<address>:定义地址元素 
+<area>:定义图像映射内部的区域 
+<b>:bold 定义粗体字 
+<base>:定义页面当中的所有链接的基准链接 
+<bdo>: bidirectional override 定义文字的显示方向 
+<big>:定义大号字 
+<blockquote>:定义长的引用 
+<body>:定义body元素 
+<br>:break 插入一个回车 
+<button>:定义按钮 
+<caption>:定义表格标题 
+<cite>:citation 定义引用 
+<code>:computer code 定义计算机代码文本 
+<col>:column 定义用于表格列的属性 
+<colgroup>:column group 定义表格的列祖 
+<dd>:definition description 定义定义的描述 
+<del>:delete 定义被删除的文本 
+<div>:division 定义文档中的节 
+<dfn>:defining instance 定义定义的项目。 
+<dl>:definition list 定义定义列表 
+<dt>:definition term 定义定义的项目 
+<em>:emphasized 定义强调文本 
+<fieldset>:定义域结构 
+<form>:定义表单 
+<frame>:定义框架的子窗口 
+<frameset>:定义框架集 
+<h1>to<h6>:定义标题1到标题6 
+<head>:定义关于文档的信息 
+<hr>:horizontal 定义水平线 
+<html>:hypertext markup language 定义html文档 
+<i>:italic 定义斜体字 
+<iframe>:inline frame 定义内联框架 
+<img>:image 定义图像 
+<input>: 定义输入域 
+<ins>:inserted 定义被插入的文本 
+<kbd>:keyboard 定义键盘文本 
+<label>:定义针对表单控件的标签 
+<legend>:定义框架集的标题 
+<li>:list item 定义列表的项目 
+<link>:定义资源引用 
+<map>:定义图像映射 
+<meta>:定义元信息 
+<noframe>:定义无框架的节 
+<noscript>:定义无脚本的节 
+<object>:定义内嵌对象 
+<ol>:ordered list 定义有序列表 
+<optgroup>:option group 定义选项组 
+<option>:定义下拉列表的选项 
+<p>:paragraph 定义段落 
+<param>:定义对象的参数 
+<pre>:preformatted 定义预格式文本 
+<q>:quotation 定义短的引用 
+<samp>:sample 定义计算机代码样本 
+<script>:定义脚本 
+<select>:定义选择列表 
+<small>:定义小字体文本 
+<span>:定义文档中的节 
+<strong>:stronger empasis定义强调文本 
+<style>:定义样式的定义 
+<sub>:subscript 定义下标文本 
+<sup>:superscript 定义上标文本 
+<table>:定义表格 
+<tbody>:table body 定义表格的主体部分 
+<td>:table data cell定义表格单元 
+<textarea>:定义文本区域 
+<tfoot>:table foot定义表也的脚注 
+<th>:table header cell定义表格的表头单元格 
+<thead>:table head定义表格的标题 
+<title>:定义文档的标题 
+<tr>:table row定义表格的行 
+<tt>:teletype 定义打字机文本 
+<ul>:unordered list 定义无序列表 
+<var>:variable 定义变量 
+ 
+ 
+head 头信息
+title 标题
+body 正文
+font 字体
+br 换行
+p 段落
+pre 预格式化
+hr 水平分界线
+sup 上标
+sub 下标
+b 粗体
+i 斜体
+u 下划线
+em 强调(斜体)
+strong 强调(粗体)
+tt 等宽字体(打印机字体)
+<ol>
+<li></li>
+<li></li>
+</ol>有序列表
+<ul>
+<li></li>
+<li></li>
+</ul>无序列表
+<a href=#>超链接
+<img src=#>图片链接
+th 表头单元
+td 表格单元
+tr 表格行
+table 表格
+caption 表格标题
+form 交互式表单
+input 输入表单控件
+option 菜单类控件可选项 select中使用
+select 菜单类控件
+textarea 多行文本域
+style 样式表

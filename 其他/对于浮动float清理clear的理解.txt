@@ -1,0 +1,66 @@
+由于浮动的元素是脱离了文档流的，所以父元素（没有浮动起来）不再包含它们，下面的例子一里，img和txt都不再被div包含。如果这时候我们在父div里面再加一个元素（例子二），它是被父div所包含的，但是它自身没有大小，所以也不能把父层撑大。例子三中，我们给了这个层清理的css属性，clear：both表示这个元素左右两边都不允许有浮动元素出现。现在我们左边浮了个img，右边浮了个txt，css会怎么处理呢？它会把具有清理属性的元素添加上边距，直到完全避过左右两个浮动的元素框（img和txt）的底部，才开始渲染这个元素（clear层）。于是父容器被clear层凭空增加出来的上边距给撑大了，看起来就象包含了img和txt一样，其实并没有包含。这几个例子你跑完以后再仔细读一下我提供的参考站点。
+例子一：
+<style>
+.news {
+  background-color: gray;
+  border: solid 1px black;
+  }
+
+.news img {
+  float: left;
+  }
+
+.news p {
+  float: right;
+  }
+</style>
+<div class="news">
+<img src="news-pic.jpg" />
+<p>some text</p>
+</div>
+
+例子二：
+<style>
+.news {
+  background-color: gray;
+  border: solid 1px black;
+  }
+
+.news img {
+  float: left;
+  }
+
+.news p {
+  float: right;
+  }
+
+</style>
+<div class="news">
+<img src="news-pic.jpg" />
+<p>some text</p>
+<div class="clear"></div>
+</div>
+
+例子三：
+<style>
+.news {
+  background-color: gray;
+  border: solid 1px black;
+  }
+
+.news img {
+  float: left;
+  }
+
+.news p {
+  float: right;
+  }
+.clear {
+  clear: both;
+  }
+</style>
+<div class="news">
+<img src="news-pic.jpg" />
+<p>some text</p>
+<div class="clear"></div>
+</div>

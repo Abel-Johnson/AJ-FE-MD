@@ -1,0 +1,152 @@
+
+PART 1
+
+问：
+我定义两个块<div id="a"><div id="b"></div></div>通过#a {
+top:500px;
+height:50px;
+width:20px;
+background:#666666;
+}
+#b {
+top:10px;
+height:10px;
+width:10px;
+background: #CCCCCC;}来控制，当#b中没设置top时两个块是挨着的，我能认为这时子块是相对于父块的位置吗？如果是这样可为什么改成top：10px没变化？在子块中加position：absolute就好了，为什么啊？
+在#a里有position：relative ，忘写了
+
+
+回答：
+positon有4个属性:static relative absolute fixed,默认的时候是static即静止定位,是按照元素在(x)html出现的顺序依次分配位置,static是不受top right left bottom影响的.当父层a的position设为relative(相对定位) 子层b的position设为(绝对定位)时,b的偏移是相对于父层a来定位,例如top:10px的偏移量就使b的顶部和a的顶部有10px的距离.但是如果a没有设置relative 而b设为absolute,b的定位就是相对于浏览器进行,此时top:10px会使b出现在离浏览器上方10px的地方.自己试下就最清楚了.
+
+PART 2
+
+小结论：
+对于使用position:relative的子类元素而言，width:100%也始终是基于基父级元素而并不会基于其上层元素中的relative。
+对于绝对定位的子无素，要是其外层的所有元素中都没有用position:relative，则width:100%是基于body，否则就是离基最近的一个position:relative的元素。
+而对于position:fixed的元素，其一直是基于body,所以其宽度100%就是基于body。
+
+PART 3
+
+下面的回答希望你有耐心看完，然后你就会了解relative  absolute  fixed  static这四种属性值的真实意义，注意要动手操作
+
+首先：fixed属性，当使用ostion:fixed时的时候，一般也会使用left、top这两个属性,left是指距离浏览器窗口左边的距离，top是指距离浏览器窗口上面的位置。并且如果网页高度很大右侧有滚动条的时候，他的位置不会随着滚动条的滚动而发生位置的变化，也就是说他的位置是固定的，看下面的例子
+<!DOCTYPE HTML>
+<head>
+<meta charset="UTF-8">
+<title>CSS POSITION</title>
+<style type="text/css">
+body{height:1200px;}
+.div_fixed{position:fixed ;left:100px;top:100px;width:50px;height:50px;background:#f00;}
+</style>
+
+</head>
+<body>
+    <div class="div_fixed">
+
+    </div>
+</body>
+</html>
+然后：absolute
+使用position:absolute属性时，一般也会使用left和top这两个属性，但是此处的left和top指的是具距离该元素的参照物的距离，那么这个参照物是什么呢？
+想作为使用position:absolut属性元素的参照物需要具备两个条件：
+    第一个条件：是他的父元素，
+
+    第二个条件：父元素使用了position:fixed；position:absolute；position:relative这三个属性中的其中一种，满足了这两个条件之后，那么left和top就以这个父元素做为参照物，那么如果没有满足呢？没有满足的话就会以（0，0)作为参考进行偏移，
+
+你说的设置了  position:absolute属性，但是并没有设置left和top就是为了满足这个条件的
+
+看下面的两个例子
+
+例子一
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>CSS POSITION</title>
+<style type="text/css">
+body{height:1200px;}
+.div_fixed{position:fixed ;left:100px;top:100px;width:50px;height:50px;background:#f00;}
+.div_absolute{position:absolute ;left:100px;top:100px;width:50px;height:50px;background:#ff0;}
+</style>
+
+</head>
+<body>
+    <div class="div_fixed">
+
+    </div>
+<div class="div_absolute">
+
+</div>
+</body>
+</html>
+例子2
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>CSS POSITION</title>
+<style type="text/css">
+body{height:1200px;}
+.div_fixed{position:fixed ;left:100px;top:100px;width:50px;height:50px;background:#f00;}
+.div_absolute{position:absolute ;left:100px;top:100px;width:50px;height:50px;background:#ff0;}
+</style>
+
+</head>
+<body>
+    <div class="div_fixed">
+<div class="div_absolute">
+
+</div>
+    </div>
+
+</body>
+</html>
+
+然后是是static这个属性，这个是一个默认存在的属性，如果你没有使用
+position:fixed；position:absolute；position:relative，那么默认使用的就是static属性，
+
+最后是position:relative属性，
+position:relative这个属性也会结合left和top使用，而且他也是有参照的，那么他的参照物是什么？他的参照就是这个元素使用static属性时的位置，看下面的两个例子
+假设这个元素没有使用position属性
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>CSS POSITION</title>
+<style type="text/css">
+body{height:1200px;}
+.div_none{width:50px;height:50px;background:#f00;}
+</style>
+
+</head>
+<body>
+    <div class="div_none">
+
+    </div>
+
+</body>
+</html>
+
+如果使用了relative属性
+
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>CSS POSITION</title>
+<style type="text/css">
+body{height:1200px;}
+.div_none{position:relative ; left:100px;top:200px;width:50px;height:50px;background:#f00;}
+</style>
+
+</head>
+<body>
+    <div class="div_none">
+
+    </div>
+
+</body>
+</html>
+
+总结：position:fixed；position:absolute；position:relative 这三个属性相同的是都会结合left和top属性使用，不同的是left和top的参照物不同，掌握了这三种情况下的参照物是什么，也就掌握了这三个属性的使用方法
