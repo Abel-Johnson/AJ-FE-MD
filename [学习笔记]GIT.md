@@ -5,7 +5,7 @@
 ](https://www.webmaster.me/uncategorized/add-multiple-ssh-keys-on-github.html)
 [添加公钥以后, 依然无法push](https://www.jianshu.com/p/be58fa27a704)   ---去到`cd /Users/Johnson/.ssh`    执行`ssh-add id_rsa2(公钥名)` 就可以了
 
-
+> 若执行ssh-add /path/to/xxx.pem是出现这个错误:Could not open a connection to your authentication agent，则先执行如下命令即可：ssh-agent bash
 
 1. 配置
 
