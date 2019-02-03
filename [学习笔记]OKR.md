@@ -61,3 +61,4 @@
 ## 课件
 
 [课件](/Users/Johnson/XNG_work/周会ppt/OKR培训.pdf)
+  

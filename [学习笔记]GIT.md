@@ -59,6 +59,17 @@
 6. 回滚
 
     git reset --hard HEAD^(commitID也可以)
+    git push origin xxx --force(同步远程仓库)
+    
+8. Git删除中间某次commit
+
+    1. 首先git log查看提交记录，找到出错的前一笔提交的commit_id
+    2. 用命令git rebase -i commit_id ,查找提交记录
+    3. 将出错那笔提交的pick改为drop
+    4. 4，Esc，:wq
+    
+    (revert也可以, 但是会留一条记录)
+    
     
 7. 放弃
     git checkout -- file可以丢弃工作区的修改：  (总之，就是让这个文件回到最近一次git commit或git add时的状态。)
@@ -119,7 +130,7 @@ Git鼓励大量使用分支：
 >     
 > 创建+切换分支：git checkout -b <name>
 >     
-> 合并某分支到当前分支：git merge <name>
+> 合并某分支到当前分支：git merge <name>  ![](/Users/Johnson/学习/技术Markdown/AJ-FE-MD/笔记配图/gitmerge--no-ff.png)
 >     
 > 删除分支：git branch -d <name>
 > 
@@ -141,3 +152,26 @@ $ git branch -d feature1
     1. git reset --hard commitid(本地的push和merge会形成MERGE-HEAD(FETCH-HEAD), HEAD（PUSH-HEAD）这样的引用。HEAD代表本地最近成功push后形成的引用。MERGE-HEAD表示成功pull后形成的引用。)
 
     2. --hard会冲掉工作区顺带暂存区
+
+
+15. [rebase讲的特别好](http://gitbook.liuhui998.com/4_2.html)
+
+
+
+## git只合并某次commit
+
+
+使用场景：因开发两个分支并行开发，直接合并会造成很多问题。只是想合并某次改变的commit，就可以实用git cherry-pick
+通过git log可以查看当前分支的所有提交的哈希值（ID）
+切到需要合并的目标分支
+运行 git cherry-pick 哈希值
+如果遇到error，运行 git status查看 ummerged 下红色的文件路径，用编辑器打开，修改（寻找 === 标志， 上半是旧代码，下半是新代码，自己决定取舍）
+完成所有冲突文件修改后，git add 对应文件
+运行 git cherry-pick --continue 即完成。
+注意：这时会弹出 一段可能会很长的描述性文字，可以全部删除，改成自己要的文字，一般我是保留最上那行，跟之前的历史描述一致，方便查找。不删除也无所谓。然后保存退出即可。
+这个界面是vi的编辑界面，一次删除多行的命令为 “数字X+dd” 即可删除当前光标一下的X行内容。
+
+
+
+
+[Git之使用命令行合并多次提交](https://www.jianshu.com/p/e9b6f92ea07c)
