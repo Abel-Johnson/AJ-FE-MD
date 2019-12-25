@@ -20,8 +20,9 @@
 	`export{newName as plainName}`
 4. default,将对象标注为default导出(default在每个模块中只能使用一次)
 	`export default {}`
-
+    - *
 ## 导入模块
+
 方式有:
 
 1. 无对象导入---只想执行里边的代码
